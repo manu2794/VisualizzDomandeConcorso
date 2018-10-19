@@ -9,13 +9,13 @@
 <body>
 	<h1> Login Form </h1>
 	<div>
-  		<h2>Accedi</h2>
+  	<!-- 	<h2>Accedi</h2>
   		<div th:if="${param.error}">
   			Nome utente o password errati!
   		</div>
   		<div th:if="${param.logout}">
    			Hai effettuato il logout. A presto!
- 		</div>
+ 		</div> -->
   		<form th:action="@{/login}" method="post">
     		<div>
       			<label>Username: <input type="text" name="username"/></label>
