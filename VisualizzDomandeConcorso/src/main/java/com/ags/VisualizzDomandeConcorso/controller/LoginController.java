@@ -20,6 +20,7 @@ public class LoginController {
 	
 	@PostMapping(value = "/login")
 	public String getSuccessLogin(Model model) {
+		
 		return "home";
 	}
 }
