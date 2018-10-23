@@ -1,5 +1,8 @@
 package com.ags.VisualizzDomandeConcorso.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,19 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 	
-	@GetMapping(value = "/")
-	public String getIndex() {
-		return "index";
-	}
-	
-	@GetMapping(value = "/login")
-	public String getLogin() {
+	@GetMapping(value = { "/", "/login" })
+	public String getLoginPage() {
 		return "login";
 	}
 	
-	@PostMapping(value = "/login")
-	public String getSuccessLogin(Model model) {
-		
-		return "home";
+	@GetMapping(value = "/admin")
+	public String getAdminPage() {
+		return "admin";
+	}
+	
+	@GetMapping(value = "/user")
+	public String getUserPage() {
+		return "user";
 	}
 }
+
