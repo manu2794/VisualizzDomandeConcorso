@@ -29,13 +29,14 @@ public class Role {
 	private String role;
 	
 	
-	public Role() {
-	}
-	
-	public Role(List<User> users, String role) {
-		this.users = users;
+	public Role(String role) {
 		this.role = role;
 	}
+	
+//	public Role(List<User> users, String role) {
+//		this.users = users;
+//		this.role = role;
+//	}
 	
 	
 	public Integer getUserRoleId() {
