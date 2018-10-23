@@ -12,13 +12,8 @@ import com.ags.VisualizzDomandeConcorso.repository.UserRepository;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-
 	@Autowired
 	private UserRepository userRepository;
-
-	//	@Autowired
-	//	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 
 	@Override
 	public void save(User user) {
