@@ -1,12 +1,16 @@
 package com.ags.VisualizzDomandeConcorso.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
@@ -19,7 +23,11 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+	@Column(nullable = false)
+	private Long id;
+	@NotEmpty
+	@Column(name = "coduser", unique = true)
+	private String codUser;
 	@Size(max = 20)
 	@NotEmpty
 	private String name;
@@ -36,13 +44,18 @@ public class User {
 	@Size(max = 30)
 	@Transient
 	private String passwordConfirm;
+	@NotEmpty
 	private boolean enabled;
 	@NotEmpty
+	@Size(min = 16, max = 16)
+	@Column(name = "fiscalcode")
+	private String fiscaCode;
+	@NotEmpty
 	@ManyToOne
+	@JoinColumn(name = "roleId")
 	private Role role;
-//	@NotEmpty
-//	@ManyToMany(mappedBy = "users")
-//	private List<CompetitionClass> classes;		
+	@OneToMany(mappedBy = "user")
+	private List<AppForm> forms;		
 	
 	
 	public User() {
@@ -61,54 +74,45 @@ public class User {
 		this.enabled = enabled;
 		this.role = role;
 	}
-	
-	
-	public Long getId() {
-		return userId;
+
+	public String getCodUser() {
+		return codUser;
 	}
-	
-	public void setId(Long id) {
-		this.userId = id;
+
+	public void setCodUser(String codUser) {
+		this.codUser = codUser;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getSurname() {
 		return surname;
 	}
-	
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
-	public void setUsername(String email) {
-		this.username = email;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
 	}
 
 	public boolean isEnabled() {
@@ -119,6 +123,14 @@ public class User {
 		this.enabled = enabled;
 	}
 
+	public String getFiscaCode() {
+		return fiscaCode;
+	}
+
+	public void setFiscaCode(String fiscaCode) {
+		this.fiscaCode = fiscaCode;
+	}
+
 	public Role getRole() {
 		return role;
 	}
@@ -127,11 +139,15 @@ public class User {
 		this.role = role;
 	}
 
-//	public List<CompetitionClass> getClasses() {
-//		return classes;
-//	}
-//
-//	public void setClasses(List<CompetitionClass> classes) {
-//		this.classes = classes;
-//	}
+	public List<AppForm> getForms() {
+		return forms;
+	}
+
+	public void setForms(List<AppForm> forms) {
+		this.forms = forms;
+	}
+
+	public Long getId() {
+		return id;
+	}
 }

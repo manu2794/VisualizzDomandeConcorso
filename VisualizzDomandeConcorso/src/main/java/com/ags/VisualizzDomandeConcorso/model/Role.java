@@ -19,12 +19,12 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "role_id", unique = true, nullable = false)
+	@Column(unique = true, nullable = false)
 	private Integer roleId;
 	@OneToMany(mappedBy = "role")
 	@Column(name = "users", nullable = false)
 	private List<User> users;
-	@Column(name = "role", length = 20)
+	@Column(name = "rolename", length = 20)
 	@NotEmpty
 	private String role;
 	
