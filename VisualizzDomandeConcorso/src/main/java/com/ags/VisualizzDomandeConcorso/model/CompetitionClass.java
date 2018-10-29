@@ -10,9 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-@Entity(name = "classes")
+@Entity
+@Table(name = "competclasses")
+//@NamedQuery(name = "CompetitionClass.findAll", query = "SELECT * FROM CompetitionClass cc")
 public class CompetitionClass {
 	
 	@Id

@@ -25,7 +25,7 @@ public class Qualification {
 	@Column(name = "qualdenom")
 	private String qualificDenom;
 	@ManyToOne
-	private DegreeEducation education;
+	private DegreeEducation educationQual;
 	@ManyToMany
 	private Set<CompetitionClass> classes;
 }

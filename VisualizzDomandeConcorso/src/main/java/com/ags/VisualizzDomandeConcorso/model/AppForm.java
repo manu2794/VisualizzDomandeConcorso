@@ -23,6 +23,10 @@ public class AppForm {
 	@NotEmpty
 	@ManyToOne
 	private User user;
+	@NotEmpty
+	@ManyToOne
+	private DegreeEducation educationForm;
+	
 	
 	
 	

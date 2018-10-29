@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "educations")
+//@NamedQuery(name = "DegreeEducation.findAll", query = "SELECT * FROM DegreeEducation d")
 public class DegreeEducation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +22,9 @@ public class DegreeEducation {
 	@NotEmpty
 	@Column(name = "denom")
 	private String denom;
-	@OneToMany(mappedBy = "education")
+	@OneToMany(mappedBy = "educationQual")
 	private Set<Qualification> qualifications;
-
+	@OneToMany(mappedBy = "educationForm")
 
 	public String getDenom() {
 		return denom;
