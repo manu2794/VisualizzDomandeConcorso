@@ -14,8 +14,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "educations")
-//@NamedQuery(name = "DegreeEducation.findAll", query = "SELECT * FROM DegreeEducation d")
+@NamedQuery(name = "DegreeEducation.findAll", query = "SELECT ds FROM DegreeEducation ds")
 public class DegreeEducation {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
