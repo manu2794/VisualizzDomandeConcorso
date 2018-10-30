@@ -10,9 +10,9 @@
         <h1>User page (Spring Security protected)</h1>
 
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-            <a th:href="@{/requestForm}">Normal page</a>
+        
+        <li><a th:href="@{/request}" th:method="get">Inserimento</a></li>
+        
         </form>
 
     </div>

@@ -27,7 +27,4 @@ public class AppForm {
 	@ManyToOne
 	private DegreeEducation educationForm;
 	
-	
-	
-	
 }
