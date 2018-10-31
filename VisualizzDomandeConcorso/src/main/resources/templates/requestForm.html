@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head lang="en"></head>
 <head>
 <title>Inserimento Domanda</title>
+
+<!-- <script>
+function sendAjaxRequest() {
+    var country = $("#country").val();
+    $.get( "/regions?country=" + country, function( data ) {
+        $("#region").empty();
+        data.forEach(function(item, i) {
+            var option = "<option value = " + item + ">" + item +  "</option>";
+            $("#region").append(option);
+        });
+    });
+};
+</script> -->
 </head>
 
 <body>
 
-	<form action="#" th:action="@{/request}" th:object="${edu}" method="post">
+	<!-- <form action="#" th:action="@{/request}" th:object="${degreeEducation}" method="post">
+		<select th:field="*{selectedDegree}">-->
 		<div>
-			Seleziona il grado di istruzione:
-			<select th:field="*{id}">
-				<option value="">--</option>
+			<select>
+				<option value=NONE>-- Seleziona grado istruzione --</option>
 				<option th:each="edu : ${educations}" th:value="${edu.id}"
-					th:text="${edu.denom}" />
+						th:text="${edu.denom}" </option>
 			</select>
 		</div>
 		<div>
 			<input type="submit" value="Sign In" />
 		</div>
-	</form>
+	<!--  </form> -->
 	
 </body>
 </html>
