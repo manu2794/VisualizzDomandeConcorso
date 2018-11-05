@@ -1,13 +1,22 @@
 package com.ags.VisualizzDomandeConcorso.view.bean;
 
 public class RequestBean {
-	private String selectedDegree;
+	private Long selectedDegree;
+	private Long selectedQual;
 
-	public String getSelectedDegree() {
+	public Long getSelectedDegree() {
 		return selectedDegree;
 	}
 
-	public void setSelectedDegree(String selectedDegree) {
+	public void setSelectedDegree(Long selectedDegree) {
 		this.selectedDegree = selectedDegree;
+	}
+
+	public Long getSelectedQual() {
+		return selectedQual;
+	}
+
+	public void setSelectedQual(Long selectedQual) {
+		this.selectedQual = selectedQual;
 	}
 }

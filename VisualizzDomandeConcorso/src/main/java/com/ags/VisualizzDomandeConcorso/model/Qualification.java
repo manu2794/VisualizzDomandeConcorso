@@ -31,4 +31,34 @@ public class Qualification {
 	private DegreeEducation educationQual;
 	@ManyToMany
 	private Set<CompetitionClass> classes;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getQualificCode() {
+		return qualificCode;
+	}
+	public void setQualificCode(String qualificCode) {
+		this.qualificCode = qualificCode;
+	}
+	public String getQualificDenom() {
+		return qualificDenom;
+	}
+	public void setQualificDenom(String qualificDenom) {
+		this.qualificDenom = qualificDenom;
+	}
+	public DegreeEducation getEducationQual() {
+		return educationQual;
+	}
+	public void setEducationQual(DegreeEducation educationQual) {
+		this.educationQual = educationQual;
+	}
+	public Set<CompetitionClass> getClasses() {
+		return classes;
+	}
+	public void setClasses(Set<CompetitionClass> classes) {
+		this.classes = classes;
+	}
 }

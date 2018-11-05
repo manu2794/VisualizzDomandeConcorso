@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	<head lang="en"></head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">	
+<head lang="en"></head>
 <head>
+<meta charset="utf-8" />
 <title>Inserimento Domanda</title>
 
 <!-- <script>
@@ -21,19 +22,16 @@ function sendAjaxRequest() {
 
 <body>
 
-	<!-- <form action="#" th:action="@{/request}" th:object="${degreeEducation}" method="post">
-		<select th:field="*{selectedDegree}">-->
+	<form action="#" th:action="@{/request}" th:object="${requestBean}" method="post">
 		<div>
-			<select>
-				<option value=NONE>-- Seleziona grado istruzione --</option>
-				<option th:each="edu : ${educations}" th:value="${edu.id}"
-						th:text="${edu.denom}" </option>
+			<select th:field="*{selectedDegree}">
+				<option value=NONE>-- Seleziona grado istruzione -- </option>
+				<option th:each="edu : ${educations}" th:value="${edu.id}" 
+						th:text="${edu.denom}" />
 			</select>
+			<button type="submit" value="Submit" title="Submit">Invia</button>
 		</div>
-		<div>
-			<input type="submit" value="Sign In" />
-		</div>
-	<!--  </form> -->
+	</form>
 	
 </body>
 </html>
