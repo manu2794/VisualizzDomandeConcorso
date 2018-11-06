@@ -24,8 +24,8 @@ function sendAjaxRequest() {
 
 	<form action="#" th:action="@{/request}" th:object="${requestBean}" method="post">
 		<div>
-			<select th:field="*{selectedDegree}">
-				<option value=NONE>-- Seleziona grado istruzione -- </option>
+			<select th:field="*{eduSelectedId}">
+				<option value=NONE> -- Seleziona grado istruzione -- </option>
 				<option th:each="edu : ${educations}" th:value="${edu.id}" 
 						th:text="${edu.denom}" />
 			</select>

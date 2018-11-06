@@ -8,6 +8,6 @@ public interface QualificationService {
 	
 	public List<Qualification> getQualifications();
 	
-	public List<Qualification> getQualificationsById(Long id);
+	public List<Qualification> getQualificationsByEdu(Long eduId);
 }
  
