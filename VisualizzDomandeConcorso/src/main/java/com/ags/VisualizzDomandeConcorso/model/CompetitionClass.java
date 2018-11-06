@@ -29,4 +29,28 @@ public class CompetitionClass {
 	private String denomClc;
 	@ManyToMany(mappedBy = "classes")
 	private Set<Qualification> qualifications;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getCodClc() {
+		return codClc;
+	}
+	public void setCodClc(String codClc) {
+		this.codClc = codClc;
+	}
+	public String getDenomClc() {
+		return denomClc;
+	}
+	public void setDenomClc(String denomClc) {
+		this.denomClc = denomClc;
+	}
+	public Set<Qualification> getQualifications() {
+		return qualifications;
+	}
+	public void setQualifications(Set<Qualification> qualifications) {
+		this.qualifications = qualifications;
+	}
 }

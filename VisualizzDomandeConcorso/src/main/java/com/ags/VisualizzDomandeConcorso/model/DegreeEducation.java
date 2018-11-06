@@ -19,20 +19,21 @@ public class DegreeEducation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "id")
+	private Long eduId;
 	@NotEmpty
 	@Column(name = "denom")
-	private String denom;
+	private String eduDenom;
 	@OneToMany(mappedBy = "educationQual")
 	private Set<Qualification> qualifications;
 	@OneToMany(mappedBy = "educationForm")
 
 	public String getDenom() {
-		return denom;
+		return eduDenom;
 	}
 	
 	public void setDenom(String descr) {
-		this.denom = descr;
+		this.eduDenom = descr;
 	}
 	
 	public Set<Qualification> getQualifications() {
@@ -44,6 +45,6 @@ public class DegreeEducation {
 	}
 	
 	public Long getId() {
-		return id;
+		return eduId;
 	}
 }

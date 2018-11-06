@@ -12,7 +12,6 @@ public interface QualificationRepository extends JpaRepository<Qualification, Lo
 	
 	public List<Qualification> findAll();
 	
-	@Query(value = "SELECT q FROM Qualification q WHERE q.educationQual = :qualId")
-	public List<Qualification> findAllById(@Param("qualId") Long id);
-	
+	@Query(value = "SELECT q FROM Qualification q WHERE q.educationQual.id = :eduId")
+	public List<Qualification> findAllByEdu(@Param("eduId") Long eduId);
 }

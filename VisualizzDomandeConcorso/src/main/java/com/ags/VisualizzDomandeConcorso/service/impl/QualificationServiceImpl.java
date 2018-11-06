@@ -21,8 +21,8 @@ public class QualificationServiceImpl implements QualificationService {
 	}
 	
 	@Override
-	public List<Qualification> getQualificationsById(Long id) {
-		return qualRepo.findAllById(id);
+	public List<Qualification> getQualificationsByEdu(Long eduId) {
+		return qualRepo.findAllByEdu(eduId);
 	}
 	
 

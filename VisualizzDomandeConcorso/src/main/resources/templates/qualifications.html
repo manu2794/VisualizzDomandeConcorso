@@ -9,9 +9,9 @@
 	
 <body>
 
-	<!-- <form action="#" th:action="@{/qualifications}" th:object="${requestBean}" method="get"> -->
+	<form action="#" th:action="@{/request/qualification}" th:object="${requestBean}" method="post">
 		<div>
-			<select>
+			<select th:field=*{qualSelectedId}>
 				<option value=NONE>-- Seleziona Titolo di studio -- </option>
 				<option th:each="qual : ${qualificationsList}" th:value="${qual.id}" 
 						th:text="${qual.qualificDenom}" />
