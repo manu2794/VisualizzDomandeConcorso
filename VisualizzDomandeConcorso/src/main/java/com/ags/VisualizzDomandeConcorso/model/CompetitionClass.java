@@ -13,6 +13,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "competclasses")
 @NamedQuery(name = "CompetitionClass.findAll", query = "SELECT cc FROM CompetitionClass cc")
@@ -27,6 +29,7 @@ public class CompetitionClass {
 	@NotEmpty
 	@Column(name = "denomclc")
 	private String denomClc;
+	@JsonBackReference
 	@ManyToMany(mappedBy = "classes")
 	private Set<Qualification> qualifications;
 	public Long getId() {

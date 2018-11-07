@@ -8,7 +8,7 @@ public class RequestBean {
 		return this.eduSelectedId;
 	}
 
-	public void setEduId(Long eduSelectedEduId) {
+	public void setEduSelectedId(Long eduSelectedEduId) {
 		this.eduSelectedId = eduSelectedEduId;
 	}
 
