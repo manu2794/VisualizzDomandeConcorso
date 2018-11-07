@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,19 +26,19 @@ public class RequestController {
 	@Autowired
 	private CompetitionClassService compService;
 	 
-	@GetMapping("/request")
+	@GetMapping("/educations")
 	public String getEduList(@ModelAttribute RequestBean requestBean, Model model) {
 		model.addAttribute("educations", eduService.getEducations());
 		return "requestForm";
 	}
 	
-	@PostMapping("/request")
+	@GetMapping("/educations/qualifications")
 	public String getQualifList(@RequestParam Long eduSelectedId, @ModelAttribute RequestBean requestBean, Model model) {
 		model.addAttribute("qualificationsList", qualService.getQualificationsByEdu(eduSelectedId));
 		return "qualifications";
 	}
 	
-	@PostMapping("/request/qualification")
+	@GetMapping("/educations/qualifications/classes")
 	public String getCompClass(@RequestParam Long qualSelectedId, @ModelAttribute RequestBean requestBean, Model model) {
 		model.addAttribute("classList", compService.getClassesByQual(qualSelectedId));
 		return "classes";

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">	
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head lang="en"></head>
 <head>
 <meta charset="utf-8" />
 <title>Inserimento Domanda</title>
+
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#degree').change(
+		function() {
+    		$.getJSON("http://localhost:8080/appointment/agencies", {
+        	cityId : $(this).val(),
+        	ajax : 'true'
+        	}, function(data) {
+        		var html = '<option value="">--alege agentia--</option>';
+            	var len = data.length;
+            	for ( var i = 0; i < len; i++) {
+              	 	html += '<option value="' + data[i].nume + '">'
+                	+ data[i].nume + '</option>';
+           	}
+            html += '</option>';
+            $('#agency').html(html);
+        });
+    });
+});
+</script>
 
 <!-- <script>
 function sendAjaxRequest() {
@@ -22,16 +45,17 @@ function sendAjaxRequest() {
 
 <body>
 
-	<form action="#" th:action="@{/request}" th:object="${requestBean}" method="post">
-		<div>
+	<form action="#" th:action="@{/educations/qualifications}" th:object="${requestBean}">
+		<div class="form-group">
+			<label for="degree"></label>
 			<select th:field="*{eduSelectedId}">
-				<option value=NONE> -- Seleziona grado istruzione -- </option>
-				<option th:each="edu : ${educations}" th:value="${edu.id}" 
-						th:text="${edu.denom}" />
+				<option value=NONE>-- Seleziona grado istruzione --</option>
+				<option th:each="edu : ${educations}" th:value="${edu.id}"
+					th:text="${edu.denom}" />
 			</select>
 			<button type="submit" value="Submit" title="Submit">Invia</button>
 		</div>
 	</form>
-	
+
 </body>
 </html>

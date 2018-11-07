@@ -9,7 +9,7 @@
 	
 <body>
 
-	<form action="#" th:action="@{/request/qualification}" th:object="${requestBean}" method="post">
+	<form action="#" th:action="@{/educations/qualifications/classes}" th:object="${requestBean}">
 		<div>
 			<select th:field=*{qualSelectedId}>
 				<option value=NONE>-- Seleziona Titolo di studio -- </option>
@@ -18,7 +18,7 @@
 			</select>
 			<button type="submit" value="Submit" title="Submit">Invia</button>
 		</div>
-	<!-- </form> -->
+	</form>
 	
 </body>
 </html>
