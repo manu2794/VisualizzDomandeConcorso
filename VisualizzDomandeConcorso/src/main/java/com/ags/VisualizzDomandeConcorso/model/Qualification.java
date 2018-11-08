@@ -13,6 +13,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "qualifications")
 @NamedQuery(name = "Qualification.findAll", query = "SELECT q FROM Qualification q")
@@ -27,8 +29,10 @@ public class Qualification {
 	@NotEmpty
 	@Column(name = "qualdenom")
 	private String qualificDenom;
+	@JsonBackReference
 	@ManyToOne
 	private DegreeEducation educationQual;
+	@JsonBackReference
 	@ManyToMany
 	private Set<CompetitionClass> classes;
 	public Long getId() {

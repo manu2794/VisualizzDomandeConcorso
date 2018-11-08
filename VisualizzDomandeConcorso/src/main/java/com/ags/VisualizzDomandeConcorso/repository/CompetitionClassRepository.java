@@ -12,8 +12,10 @@ public interface CompetitionClassRepository extends JpaRepository<CompetitionCla
 	
 	public List<CompetitionClass> findAll();
 	
-	@Query(value = "SELECT * FROM qualifications_classes qc JOIN competclasses cc " + 
+	@Query(value = "SELECT *" + 
+				   "FROM competclasses cc JOIN qualifications_classes qc " + 
 				   "ON qc.classes_id = cc.id " + 
 				   "WHERE qc.qualifications_id = :qualId", nativeQuery = true)
 	public List<CompetitionClass> findAllByQual(@Param("qualId") Long qualId);
+	
 }

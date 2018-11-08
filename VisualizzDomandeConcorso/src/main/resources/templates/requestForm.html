@@ -1,37 +1,109 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">	
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <head lang="en"></head>
 <head>
 <meta charset="utf-8" />
 <title>Inserimento Domanda</title>
 
-<!-- <script>
-function sendAjaxRequest() {
-    var country = $("#country").val();
-    $.get( "/regions?country=" + country, function( data ) {
-        $("#region").empty();
-        data.forEach(function(item, i) {
-            var option = "<option value = " + item + ">" + item +  "</option>";
-            $("#region").append(option);
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+	<!-- Script per ottenere Titoli di studio per grado di istruzione -->
+	
+<script>
+$(document).ready(function() {
+	$('#degree').change(
+		function() {
+    		$.getJSON("http://localhost:8080/educations/qualifications", {
+        	eduSelectedId : $(this).val(),
+        	ajax : 'true'
+        	}, function(data) {
+        		var html = '<option value="">-- Seleziona Titolo di Studio --</option>';
+            	var len = data.length;
+            	for ( var i = 0; i < len; i++) {
+              	 	html += '<option value="' + data[i].id + '">'
+                	+ data[i].qualificDenom + '</option>';
+           	}
+            html += '</option>';
+            $('#qualification').html(html);
         });
     });
-};
-</script> -->
+});
+</script>
+
+<!-- Script per ottenere Classi di concorso per titolo selezionato -->
+
+<script>
+$(document).ready(function() {
+	$('#qualification').change(
+		function() {
+    		$.getJSON("http://localhost:8080/educations/qualifications/classes", {
+        	qualSelectedId : $(this).val(),
+        	ajax : 'true'
+        	}, function(data) {
+        		var html = '<option value="">Seleziona Classe di Concorso...</option>';
+            	var len = data.length;
+            	for ( var i = 0; i < len; i++) {
+              	 	html += '<option value="' + data[i].id + '">'
+                	+ data[i].denomClc + '</option>';
+           	}
+            html += '</option>';
+            $('#class').html(html);
+        });
+    });
+});
+</script>
+
+<!-- Script per selezionare classe di concorso -->
+
+<script>
+$(document).ready(function(){
+		$("#class").change(onSelectChange);
+	});
+ 
+	function onSelectChange() {
+		var selected = $("#class option:selected");		
+		var output = "";
+		if(selected.val() != 0){
+			output = "La classe selezionata è:" + selected.text();
+		}
+		$("#output").html(output);
+	}
+</script>
+
 </head>
 
 <body>
 
-	<form action="#" th:action="@{/request}" th:object="${requestBean}" method="post">
-		<div>
-			<select th:field="*{eduSelectedId}">
-				<option value=NONE> -- Seleziona grado istruzione -- </option>
-				<option th:each="edu : ${educations}" th:value="${edu.id}" 
-						th:text="${edu.denom}" />
-			</select>
-			<button type="submit" value="Submit" title="Submit">Invia</button>
-		</div>
+	<form action="#" th:action="@{/request}" th:object="${requestBean}" th:method="get">
+		
+		<fieldset>
+			<div class="form-group">
+				<select class="form-control" id="degree" 
+						name="degree" required="required">
+					<option value=NONE>Seleziona grado istruzione...</option>
+					<option th:each="edu : ${educations}" th:value="${edu.id}"
+							th:text="${edu.denom}" />
+				</select>	
+			</div>
+		
+			<div class="form-group">
+				<select class="form-control" id="qualification"
+						name="qualification" required="required">
+				</select>
+			</div>
+		
+			<div class="form-group">
+				<select class="form-control" id="class"
+						name="class" required="required"
+						th:field="*{classSelectedId}">
+				</select>
+			</div>
+		</fieldset>
+		
+		<button class="output" type="submit" value="Submit" title="Submit">Invia</button>
 	</form>
-	
 </body>
 </html>

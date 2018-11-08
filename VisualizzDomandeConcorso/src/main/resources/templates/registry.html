@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head lang="en"></head>
+<head>
+
+<meta charset="utf-8" />
+<title>Anagrafica</title>
+
+</head>
+
+<body>
+	
+	<form action="#" th:action="@{/registry}" th:object="${requestBean}" th:method="get">
+		
+		<p>Nome: <input type="text" name="firstname"></p>
+		<p>Cognome: <input type="text" name="lastname"></p>
+		<p>Sesso: 
+			<input type="radio" name="gender" value="uomo" checked> Uomo 
+			<input type="radio" name="gender" value="donna"> Donna
+		<p>Data di nascita: <input type="text" name="birthdate"></p>
+		<p>Luogo di nascita: <input type="text" name="birthcity"></p>
+		<p>
+		
+		
+		<button class="output" type="submit" value="Submit" title="Submit">Invia</button>
+	</form>
+	
+	
+
+</body>
+</html>
