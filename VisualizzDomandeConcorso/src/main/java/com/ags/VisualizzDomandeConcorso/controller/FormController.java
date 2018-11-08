@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ags.VisualizzDomandeConcorso.model.CompetitionClass;
 import com.ags.VisualizzDomandeConcorso.model.Qualification;
@@ -20,7 +22,7 @@ import com.ags.VisualizzDomandeConcorso.view.bean.RequestBean;
 
 @Controller
 @SessionAttributes("requestBean")
-public class RequestController {
+public class FormController {
 	
 	@Autowired
 	private DegreeEducationService eduService; 
@@ -30,11 +32,10 @@ public class RequestController {
 	
 	@Autowired
 	private CompetitionClassService compService;
-	 
 	
 	@ModelAttribute("requestBean")
-	    public RequestBean requestBean() {
-	        return new RequestBean();
+    public RequestBean requestBean() {
+        return new RequestBean();
 	}
 	
 	@GetMapping("/educations")
@@ -56,11 +57,12 @@ public class RequestController {
 	}
 	
 	@GetMapping("/request")
-	public String getClassSelected(@RequestParam(value = "classSelectedId", required = true) Long classSelectedId, Model model, @ModelAttribute("requestBean") RequestBean requestBean) {
+	public ModelAndView redirectSelectedDatas(@RequestParam(value = "classSelectedId", required = true) Long classSelectedId, @ModelAttribute("requestBean") RequestBean requestBean) {
 		requestBean.setClassSelectedId(classSelectedId);
-		model.addAttribute("eduSelectedId", requestBean.getEduSelectedId());
-		model.addAttribute("qualSelectedId", requestBean.getQualSelectedId());
-		model.addAttribute("classSelectedId", requestBean.getClassSelectedId());
-		return "sentRequest";
+		ModelAndView mav = new ModelAndView("forward:/insert");
+		mav.addObject("eduSelectedId", requestBean.getEduSelectedId());
+		mav.addObject("qualSelectedId", requestBean.getQualSelectedId());
+		mav.addObject("classSelectedId", requestBean.getClassSelectedId());
+		return mav;
 	}
 }

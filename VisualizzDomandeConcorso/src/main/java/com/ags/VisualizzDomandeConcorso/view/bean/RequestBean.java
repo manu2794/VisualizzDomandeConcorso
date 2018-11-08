@@ -4,6 +4,8 @@ public class RequestBean {
 	private Long eduSelectedId;
 	private Long qualSelectedId;
 	private Long classSelectedId;
+	
+	private String ok;
 
 	public Long getEduSelectedId() {
 		return this.eduSelectedId;
@@ -27,5 +29,13 @@ public class RequestBean {
 
 	public void setClassSelectedId(Long classSelectedId) {
 		this.classSelectedId = classSelectedId;
+	}
+
+	public String getOk() {
+		return ok;
+	}
+
+	public void setOk(String ok) {
+		this.ok = ok;
 	}
 }
