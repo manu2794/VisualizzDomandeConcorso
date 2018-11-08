@@ -22,7 +22,7 @@ $(document).ready(function() {
         		var html = '<option value="">-- Seleziona Titolo di Studio --</option>';
             	var len = data.length;
             	for ( var i = 0; i < len; i++) {
-              	 	html += '<option value="' + data[i].qualificDenom + '">'
+              	 	html += '<option value="' + data[i].id + '">'
                 	+ data[i].qualificDenom + '</option>';
            	}
             html += '</option>';
@@ -77,7 +77,7 @@ $(document).ready(function(){
 
 <body>
 
-	<form action="#" th:action="@{/educations/qualifications}" th:object="${requestBean}">
+	<form action="#" th:action="@{/request}" th:object="${requestBean}" th:method="get">
 		
 		<fieldset>
 			<div class="form-group">
@@ -97,12 +97,13 @@ $(document).ready(function(){
 		
 			<div class="form-group">
 				<select class="form-control" id="class"
-						name="class" required="required">
+						name="class" required="required"
+						th:field="*{classSelectedId}">
 				</select>
 			</div>
 		</fieldset>
 		
-		<button type="submit" value="Submit" title="Submit">Invia</button>
+		<button class="output" type="submit" value="Submit" title="Submit">Invia</button>
 	</form>
 	
 	
