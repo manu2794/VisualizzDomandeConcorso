@@ -24,10 +24,10 @@ public class Qualification {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty
-	@Column(name = "qualcode")
+	@Column(name = "code")
 	private String qualificCode;
 	@NotEmpty
-	@Column(name = "qualdenom")
+	@Column(name = "denom")
 	private String qualificDenom;
 	@JsonBackReference
 	@ManyToOne

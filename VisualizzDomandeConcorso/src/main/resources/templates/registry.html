@@ -12,19 +12,23 @@
 
 <body>
 	
-	<form action="#" th:action="@{/registry}" th:object="${requestBean}" th:method="get">
+	<form action="#" th:action="@{/registry}" th:object="${infoUser}" th:method="post">
 		
 		<p>Nome: <input type="text" name="firstname"></p>
 		<p>Cognome: <input type="text" name="lastname"></p>
 		<p>Sesso: 
 			<input type="radio" name="gender" value="uomo" checked> Uomo 
 			<input type="radio" name="gender" value="donna"> Donna
-		<p>Data di nascita: <input type="text" name="birthdate"></p>
-		<p>Luogo di nascita: <input type="text" name="birthcity"></p>
-		<p>
+		<p>Data di nascita: <input type="text" name="birthDate"></p>
+		<p>Luogo di nascita: <input type="text" name="originCity"></p>
+		<p>Codice fiscale: <input type="text" name="fiscalCode"></p>
+		
+		<p>Provincia di residenza: <input type="text" name="province"></p>
+		<p>Comune di residenza: <input type="text" name="municipality"></p>
+		<p>Via: <input type="text" name="street"></p>
 		
 		
-		<button class="output" type="submit" value="Submit" title="Submit">Invia</button>
+		<button class="output" type="submit" value="Submit" title="Submit">Avanti</button>
 	</form>
 	
 	

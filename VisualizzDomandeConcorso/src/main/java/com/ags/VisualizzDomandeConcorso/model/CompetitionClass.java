@@ -24,10 +24,10 @@ public class CompetitionClass {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty
-	@Column(name = "codclc")
+	@Column(name = "code")
 	private String codClc;
 	@NotEmpty
-	@Column(name = "denomclc")
+	@Column(name = "denom")
 	private String denomClc;
 	@JsonBackReference
 	@ManyToMany(mappedBy = "classes")

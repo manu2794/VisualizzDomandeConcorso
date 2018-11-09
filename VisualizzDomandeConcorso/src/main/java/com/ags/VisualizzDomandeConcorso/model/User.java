@@ -1,5 +1,6 @@
 package com.ags.VisualizzDomandeConcorso.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -25,18 +28,8 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
-	@NotEmpty
-	@Column(name = "coduser", unique = true)
-	private String codUser;
 	@Size(max = 20)
 	@NotEmpty
-	private String name;
-	@Size(max = 20)
-	@NotEmpty
-	private String surname;
-	@Size(max = 20)
-	@NotEmpty
-	@Column(name = "username")
 	private String username;
 	@Size(max = 30)
 	@NotEmpty
@@ -46,10 +39,40 @@ public class User {
 	private String passwordConfirm;
 	@NotEmpty
 	private boolean enabled;
+	
+	@Size(max = 20)
+	@NotEmpty
+	@Column(name = "firstname")
+	private String firstName;
+	@Size(max = 20)
+	@NotEmpty
+	@Column(name = "lastname")
+	private String lastName;
+	@NotEmpty
+	private String gender;
+	@NotEmpty
+	@Temporal(TemporalType.DATE)
+	@Column(name = "birthdate")
+	private Date birthDate;
+	@Size(max = 20)
+	@NotEmpty
+	@Column(name = "origincity")
+	private String originCity;
 	@NotEmpty
 	@Size(min = 16, max = 16)
 	@Column(name = "fiscalcode")
-	private String fiscaCode;
+	private String fiscalCode;
+	
+	@Size(max = 20)
+	@NotEmpty
+	private String province;
+	@Size(max = 20)
+	@NotEmpty
+	private String municipality;
+	@Size(max = 20)
+	@NotEmpty
+	private String street;
+	
 	@NotEmpty
 	@ManyToOne
 	@JoinColumn(name = "roleId")
@@ -59,13 +82,12 @@ public class User {
 	
 	
 	public User() {
-		
 	}
 	
 	public User(String username, String password, boolean enabled) {
 		this.username = username;
 		this.password = password;
-		this.enabled = enabled;	
+		this.enabled = enabled;
 	}
 
 	public User(String username, String password, boolean enabled, Role role) {
@@ -75,28 +97,12 @@ public class User {
 		this.role = role;
 	}
 
-	public String getCodUser() {
-		return codUser;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCodUser(String codUser) {
-		this.codUser = codUser;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -115,6 +121,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -123,12 +137,76 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getFiscaCode() {
-		return fiscaCode;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFiscaCode(String fiscaCode) {
-		this.fiscaCode = fiscaCode;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Date getBirtDhate() {
+		return birthDate;
+	}
+
+	public void setBirthate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getOriginCity() {
+		return originCity;
+	}
+
+	public void setOriginCity(String originCity) {
+		this.originCity = originCity;
+	}
+
+	public String getFiscalCode() {
+		return fiscalCode;
+	}
+
+	public void setFiscalCode(String fiscalCode) {
+		this.fiscalCode = fiscalCode;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getMunicipality() {
+		return municipality;
+	}
+
+	public void setMunicipality(String municipality) {
+		this.municipality = municipality;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public Role getRole() {
@@ -145,9 +223,5 @@ public class User {
 
 	public void setForms(List<AppForm> forms) {
 		this.forms = forms;
-	}
-
-	public Long getId() {
-		return id;
 	}
 }
